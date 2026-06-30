@@ -64,18 +64,10 @@
         <div class="services__grid">
           <article class="service-card">
             <div class="service-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M10 8h4M12 2v2M12 20v2"/><path d="M9 12h6"/></svg>
             </div>
-            <h3 class="service-card__title">Oil Change &amp; Fluids</h3>
-            <p class="service-card__desc">Regular oil changes, coolant flushes, brake fluid, and transmission service to extend engine life.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-            </div>
-            <h3 class="service-card__title">Brake Service</h3>
-            <p class="service-card__desc">Pad and rotor replacement, brake line inspection, and full system diagnostics for safe stopping.</p>
+            <h3 class="service-card__title">Hybrid &amp; EV Repair</h3>
+            <p class="service-card__desc">Battery testing, replacement, and diagnostics — plus high-voltage system repair, alternator service, electrical troubleshooting, and full hybrid/EV maintenance.</p>
           </article>
 
           <article class="service-card">
@@ -96,10 +88,18 @@
 
           <article class="service-card">
             <div class="service-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="4" width="10" height="16" rx="2"/><path d="M10 8h4M12 2v2M12 20v2"/><path d="M9 12h6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
             </div>
-            <h3 class="service-card__title">Hybrid &amp; EV Repair</h3>
-            <p class="service-card__desc">Battery testing, replacement, and diagnostics — plus high-voltage system repair, alternator service, electrical troubleshooting, and full hybrid/EV maintenance.</p>
+            <h3 class="service-card__title">Brake Service</h3>
+            <p class="service-card__desc">Pad and rotor replacement, brake line inspection, and full system diagnostics for safe stopping.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <h3 class="service-card__title">Oil Change &amp; Fluids</h3>
+            <p class="service-card__desc">Regular oil changes, coolant flushes, brake fluid, and transmission service to extend engine life.</p>
           </article>
 
           <article class="service-card">
@@ -254,11 +254,11 @@
                 <label for="service" class="form__label">Service</label>
                 <select id="service" name="service" class="form__input form__select" required>
                   <option value="" disabled selected>Select a service</option>
-                  <option value="oil-change">Oil Change &amp; Fluids</option>
-                  <option value="brakes">Brake Service</option>
+                  <option value="hybrid-ev">Hybrid &amp; EV Repair</option>
                   <option value="diagnostics">Engine Diagnostics</option>
                   <option value="tires">Tire Services</option>
-                  <option value="hybrid-ev">Hybrid &amp; EV Repair</option>
+                  <option value="brakes">Brake Service</option>
+                  <option value="oil-change">Oil Change &amp; Fluids</option>
                   <option value="inspection">Inspection</option>
                   <option value="other">Other</option>
                 </select>
