@@ -55,8 +55,11 @@
 
     options.forEach(function (option) {
       const el = document.createElement('option');
-      el.value = option;
-      el.textContent = option;
+      el.value = option.value;
+      el.textContent = option.label;
+      if (option.make) {
+        el.dataset.make = option.make;
+      }
       select.appendChild(el);
     });
   }
@@ -68,57 +71,61 @@
     const years = [];
 
     for (let year = currentYear; year >= currentYear - 35; year -= 1) {
-      years.push(String(year));
+      years.push({ value: String(year), label: String(year) });
     }
 
     populateSelect(yearSelect, years, 'Select year');
   }
 
-  function populateMakeOptions() {
-    if (!makeSelect) return;
+  function populateAllModelOptions() {
+    if (!modelSelect) return;
 
-    const makes = Object.keys(VEHICLE_DATA).sort(function (a, b) {
-      if (a === 'Other') return 1;
-      if (b === 'Other') return -1;
-      return a.localeCompare(b);
+    const models = [];
+
+    Object.keys(VEHICLE_DATA).forEach(function (make) {
+      VEHICLE_DATA[make].forEach(function (model) {
+        models.push({
+          value: model,
+          label: make === 'Other' ? 'Other' : model + ' (' + make + ')',
+          make: make
+        });
+      });
     });
 
-    populateSelect(makeSelect, makes, 'Select make');
-  }
+    models.sort(function (a, b) {
+      return a.label.localeCompare(b.label);
+    });
 
-  function resetModelSelect() {
-    if (!modelSelect) return;
-
-    modelSelect.disabled = true;
-    populateSelect(modelSelect, [], 'Select make first');
-  }
-
-  function populateModelOptions(make) {
-    if (!modelSelect) return;
-
-    const models = VEHICLE_DATA[make] || ['Other'];
-    modelSelect.disabled = false;
     populateSelect(modelSelect, models, 'Select model');
   }
 
+  function filterModelOptions(make) {
+    if (!modelSelect) return;
+
+    Array.from(modelSelect.options).forEach(function (option, index) {
+      if (index === 0) return;
+      option.hidden = Boolean(make) && option.dataset.make !== make;
+    });
+
+    modelSelect.value = '';
+  }
+
   populateYearOptions();
-  populateMakeOptions();
-  resetModelSelect();
+  populateAllModelOptions();
 
   if (makeSelect) {
     makeSelect.addEventListener('change', function () {
-      if (makeSelect.value) {
-        populateModelOptions(makeSelect.value);
-      } else {
-        resetModelSelect();
-      }
+      filterModelOptions(makeSelect.value);
     });
   }
 
   function resetVehicleSelects() {
     if (yearSelect) yearSelect.selectedIndex = 0;
     if (makeSelect) makeSelect.selectedIndex = 0;
-    resetModelSelect();
+    if (modelSelect) {
+      filterModelOptions('');
+      modelSelect.selectedIndex = 0;
+    }
   }
 
   /* Footer year */
