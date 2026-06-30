@@ -216,8 +216,25 @@
 
             <div class="form__row">
               <div class="form__group">
-                <label for="vehicle" class="form__label">Vehicle</label>
-                <input type="text" id="vehicle" name="vehicle" class="form__input" required placeholder="2020 Toyota Camry">
+                <label for="vehicle-year" class="form__label">Vehicle Year</label>
+                <select id="vehicle-year" name="year" class="form__input form__select" required>
+                  <option value="" disabled selected>Select year</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label for="make" class="form__label">Vehicle Make</label>
+                <select id="make" name="make" class="form__input form__select" required>
+                  <option value="" disabled selected>Select make</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="form__group">
+                <label for="model" class="form__label">Vehicle Model</label>
+                <select id="model" name="model" class="form__input form__select" required disabled>
+                  <option value="" disabled selected>Select make first</option>
+                </select>
               </div>
               <div class="form__group">
                 <label for="service" class="form__label">Service</label>
@@ -336,7 +353,7 @@
         <img src="images/logo.svg" alt="" class="footer__logo" width="32" height="32" aria-hidden="true">
         <span>Green Torque Auto Repair</span>
       </div>
-      <p class="footer__copy">&copy; <span id="year"></span> Green Torque Auto Repair. All rights reserved.</p>
+      <p class="footer__copy">&copy; <span id="copyright-year"></span> Green Torque Auto Repair. All rights reserved.</p>
     </div>
   </footer>
 
