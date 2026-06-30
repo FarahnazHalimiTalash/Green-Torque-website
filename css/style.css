@@ -796,10 +796,6 @@ ul {
     grid-template-columns: 1fr;
   }
 
-  .about__stats {
-    grid-template-columns: 1fr;
-  }
-
   .hero__actions {
     flex-direction: column;
   }
