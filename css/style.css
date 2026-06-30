@@ -664,6 +664,14 @@ ul {
   line-height: 1.6;
 }
 
+.contact__item a {
+  color: var(--color-black);
+}
+
+.contact__item a:hover {
+  color: var(--color-text-muted);
+}
+
 .contact__map {
   min-height: 20rem;
   border-radius: var(--radius);
