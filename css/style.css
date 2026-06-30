@@ -396,13 +396,17 @@ ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  align-items: start;
 }
 
 .about__text {
   color: var(--color-text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   line-height: 1.7;
+}
+
+.about__text:last-of-type {
+  margin-bottom: 1.5rem;
 }
 
 .about__features {
@@ -428,33 +432,53 @@ ul {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
-.about__stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+.about__reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.stat {
-  text-align: center;
-  padding: 2rem 1rem;
+.reviews__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.reviews__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-card {
+  margin: 0;
+  padding: 1.5rem;
   background: var(--color-bg-alt);
-  border-radius: var(--radius);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--color-primary);
 }
 
-.stat__number {
-  display: block;
-  font-size: 2.25rem;
-  font-weight: 700;
+.review-card__stars {
   color: var(--color-secondary);
-  line-height: 1;
-  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
 }
 
-.stat__label {
-  font-size: 0.875rem;
+.review-card__text {
+  font-size: 0.9375rem;
   color: var(--color-text-muted);
-  font-weight: 500;
+  line-height: 1.65;
+  font-style: italic;
+  margin-bottom: 0.875rem;
+}
+
+.review-card__author {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  font-style: normal;
 }
 
 /* Payments */
@@ -718,10 +742,6 @@ ul {
   .booking__grid,
   .contact__grid {
     grid-template-columns: 1fr;
-  }
-
-  .about__stats {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 
