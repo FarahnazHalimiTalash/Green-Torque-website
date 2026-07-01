@@ -3,9 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Green Torque Auto Repair — professional automotive services, honest pricing, and convenient appointment booking.">
+  <title>Green Torque Hybrid/EV Repair | Sacramento, CA Auto Service</title>
+  <meta name="description" content="Green Torque Hybrid/EV Repair in Sacramento, CA — hybrid &amp; electric vehicle repair, battery service, diagnostics, brakes, tires, oil changes, and inspections. Toyota, Tesla, BMW, Honda &amp; all major makes. Open daily 8 AM–6 PM. Call (916) 896-9086.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Green Torque Hybrid/EV Repair">
+  <meta name="geo.region" content="US-CA">
+  <meta name="geo.placename" content="Sacramento">
+  <meta name="geo.position" content="38.6024175;-121.4019173">
+  <meta name="ICBM" content="38.6024175, -121.4019173">
+  <link rel="canonical" href="https://greentorqueev.com/">
   <meta name="theme-color" content="#000000">
-  <title>Green Torque Hybrid/EV Repair</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Green Torque Hybrid/EV Repair">
+  <meta property="og:title" content="Green Torque Hybrid/EV Repair | Sacramento, CA">
+  <meta property="og:description" content="Hybrid &amp; EV repair, diagnostics, brakes, tires, and honest auto service in Sacramento. Book your appointment today.">
+  <meta property="og:url" content="https://greentorqueev.com/">
+  <meta property="og:image" content="https://greentorqueev.com/images/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Green Torque Hybrid/EV Repair | Sacramento, CA">
+  <meta name="twitter:description" content="Hybrid &amp; EV repair, diagnostics, brakes, tires, and honest auto service in Sacramento. Book your appointment today.">
+  <meta name="twitter:image" content="https://greentorqueev.com/images/logo.png">
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/logo.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +55,7 @@
         <li><a href="#home" class="nav__link">Home</a></li>
         <li><a href="#services" class="nav__link">Services</a></li>
         <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#reviews" class="nav__link">Reviews</a></li>
         <li><a href="#booking" class="nav__link nav__link--cta">Book Now</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
       </ul>
@@ -43,8 +69,8 @@
       <div class="hero__overlay"></div>
       <div class="container hero__content">
         <p class="hero__eyebrow">Trusted Auto Repair</p>
-        <h1 class="hero__title">Quality Service.<br>Honest Pricing.</h1>
-        <p class="hero__subtitle">Green Torque keeps your vehicle running smoothly with expert technicians, transparent estimates, and convenient scheduling.</p>
+        <h1 class="hero__title">Quality Hybrid &amp; EV Repair.<br>Honest Pricing.</h1>
+        <p class="hero__subtitle">Sacramento's trusted auto shop for hybrid, electric, and everyday vehicle service — expert technicians, transparent estimates, and convenient scheduling.</p>
         <div class="hero__actions">
           <a href="#booking" class="btn btn--primary">Schedule Appointment</a>
           <a href="#services" class="btn btn--outline">View Services</a>
@@ -115,27 +141,32 @@
 
     <!-- About -->
     <section class="section about" id="about">
-      <div class="container about__grid">
-        <div class="about__content">
-          <p class="section__eyebrow">Who We Are</p>
-          <h2 class="section__title">Expert Care You Can Trust</h2>
-          <p class="about__text">Green Torque Hybrid/EV Repair is Sacramento's trusted destination for precision automotive service. From advanced hybrid and electric vehicle systems to everyday maintenance, our certified technicians deliver accurate diagnostics, transparent pricing, and repairs performed to the highest standard.</p>
-          <p class="about__text">We believe every customer deserves clear communication, honest recommendations, and workmanship that stands behind its promise. That commitment has made us a preferred choice for drivers who expect more from their repair shop.</p>
-          <ul class="about__features">
-            <li>Hybrid &amp; EV specialized expertise</li>
-            <li>Transparent, upfront estimates</li>
-            <li>Quality parts and warranty-backed repairs</li>
-            <li>Open seven days a week for your convenience</li>
-          </ul>
+      <div class="container about__content">
+        <p class="section__eyebrow">Who We Are</p>
+        <h2 class="section__title">Expert Care You Can Trust</h2>
+        <p class="about__text">Green Torque Hybrid/EV Repair is Sacramento's trusted destination for precision automotive service. From advanced hybrid and electric vehicle systems to everyday maintenance, our certified technicians deliver accurate diagnostics, transparent pricing, and repairs performed to the highest standard.</p>
+        <p class="about__text">We believe every customer deserves clear communication, honest recommendations, and workmanship that stands behind its promise. That commitment has made us a preferred choice for drivers who expect more from their repair shop.</p>
+        <ul class="about__features">
+          <li>Hybrid &amp; EV specialized expertise</li>
+          <li>Transparent, upfront estimates</li>
+          <li>Quality parts and warranty-backed repairs</li>
+          <li>Open seven days a week for your convenience</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section reviews" id="reviews">
+      <div class="container">
+        <div class="section__header section__header--center">
+          <p class="section__eyebrow">Customer Feedback</p>
+          <h2 class="section__title">What Our Customers Say</h2>
+          <div class="reviews__summary" id="reviews-summary"></div>
         </div>
-        <div class="about__reviews" id="google-reviews">
-          <h3 class="reviews__title">What Our Customers Say</h3>
-          <div class="reviews__summary" id="reviews-summary" hidden></div>
-          <div class="reviews__list" id="reviews-list">
-            <p class="reviews__message">Loading Google reviews…</p>
-          </div>
-          <a href="#" class="reviews__link" id="reviews-google-link">See all reviews on Google</a>
-          <p class="reviews__attribution">Reviews powered by Google</p>
+        <div class="reviews__grid" id="reviews-list"></div>
+        <div class="reviews__footer">
+          <a href="https://www.google.com/maps/place/Green+Torque+Hybrid%2FEV+Repair+and+Services/@38.6024175,-121.4019173,17z/data=!3m1!4b1!4m6!3m5!1s0x809adbfcb6282a75:0x39d1f42f098ed503!8m2!3d38.6024175!4d-121.4019173!16s%2Fg%2F11wmw2rnxj" class="reviews__link" id="reviews-google-link" target="_blank" rel="noopener noreferrer">See all reviews on Google</a>
+          <p class="reviews__attribution">Reviews from Google</p>
         </div>
       </div>
     </section>
@@ -306,7 +337,7 @@
             </div>
 
             <div class="form__group">
-              <label for="message" class="form__label">Additional Notes <span class="form__optional">(optional)</span></label>
+              <label for="message" class="form__label">Additional Notes</label>
               <textarea id="message" name="message" class="form__input form__textarea" rows="3" placeholder="Describe any symptoms or special requests..."></textarea>
             </div>
 
@@ -333,7 +364,9 @@
               </div>
               <div>
                 <h3 class="contact__label">Address</h3>
-                <p><a href="https://www.google.com/maps/search/?api=1&amp;query=2031+Fulton+Avenue,+Sacramento,+CA+95825" target="_blank" rel="noopener noreferrer">2031 Fulton Avenue<br>Sacramento, CA 95825</a></p>
+                <address class="contact__address">
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=2031+Fulton+Avenue,+Sacramento,+CA+95825" target="_blank" rel="noopener noreferrer">2031 Fulton Avenue<br>Sacramento, CA 95825</a>
+                </address>
               </div>
             </div>
 
@@ -386,7 +419,10 @@
     </div>
   </footer>
 
-  <script src="js/reviews-config.js"></script>
+  <script src="js/seo-config.js"></script>
+  <script src="js/vehicle-data.js"></script>
+  <script src="js/reviews-data.js"></script>
+  <script src="js/seo-schema.js"></script>
   <script src="js/google-reviews.js"></script>
   <script src="js/script.js"></script>
 </body>

@@ -21,32 +21,7 @@
   const hybridServiceSelect = document.getElementById('hybrid-service');
   const submitButton = bookingForm ? bookingForm.querySelector('button[type="submit"]') : null;
 
-  const ADMIN_EMAIL = 'Info@greentorqueev.com';
-
-  const VEHICLE_DATA = {
-    Acura: ['ILX', 'Integra', 'MDX', 'RDX', 'TLX', 'Other'],
-    Audi: ['A3', 'A4', 'A6', 'Q3', 'Q5', 'Q7', 'e-tron', 'Other'],
-    BMW: ['2 Series', '3 Series', '5 Series', 'X1', 'X3', 'X5', 'i4', 'iX', 'Other'],
-    Chevrolet: ['Blazer', 'Bolt EV', 'Camaro', 'Equinox', 'Malibu', 'Silverado', 'Suburban', 'Tahoe', 'Traverse', 'Other'],
-    Dodge: ['Challenger', 'Charger', 'Durango', 'Other'],
-    Ford: ['Bronco', 'Edge', 'Escape', 'Explorer', 'F-150', 'Focus', 'Fusion', 'Mach-E', 'Mustang', 'Ranger', 'Other'],
-    GMC: ['Acadia', 'Canyon', 'Sierra', 'Terrain', 'Yukon', 'Other'],
-    Honda: ['Accord', 'Civic', 'CR-V', 'Fit', 'HR-V', 'Odyssey', 'Pilot', 'Prologue', 'Ridgeline', 'Other'],
-    Hyundai: ['Elantra', 'Ioniq 5', 'Ioniq 6', 'Kona', 'Palisade', 'Santa Fe', 'Sonata', 'Tucson', 'Other'],
-    Jeep: ['Cherokee', 'Compass', 'Grand Cherokee', 'Wrangler', 'Other'],
-    Kia: ['EV6', 'Forte', 'K5', 'Niro', 'Seltos', 'Sorento', 'Soul', 'Sportage', 'Telluride', 'Other'],
-    Lexus: ['ES', 'GX', 'IS', 'NX', 'RX', 'UX', 'Other'],
-    Mazda: ['CX-30', 'CX-5', 'CX-50', 'CX-90', 'Mazda3', 'Mazda6', 'Other'],
-    'Mercedes-Benz': ['C-Class', 'E-Class', 'EQE', 'EQS', 'GLC', 'GLE', 'Other'],
-    Nissan: ['Altima', 'Armada', 'Frontier', 'Leaf', 'Maxima', 'Murano', 'Pathfinder', 'Rogue', 'Sentra', 'Titan', 'Other'],
-    Ram: ['1500', '2500', '3500', 'ProMaster', 'Other'],
-    Subaru: ['Ascent', 'Crosstrek', 'Forester', 'Impreza', 'Legacy', 'Outback', 'Other'],
-    Tesla: ['Model 3', 'Model S', 'Model X', 'Model Y', 'Cybertruck', 'Other'],
-    Toyota: ['4Runner', 'bZ4X', 'Camry', 'Corolla', 'Highlander', 'Prius', 'RAV4', 'Sienna', 'Tacoma', 'Tundra', 'Other'],
-    Volkswagen: ['Atlas', 'Golf', 'ID.4', 'Jetta', 'Passat', 'Tiguan', 'Other'],
-    Volvo: ['EX30', 'S60', 'XC40', 'XC60', 'XC90', 'Other'],
-    Other: ['Other']
-  };
+  const VEHICLE_DATA = window.VEHICLE_DATA || {};
 
   function populateSelect(select, options, placeholder) {
     if (!select) return;
@@ -287,16 +262,12 @@
       const formData = new FormData(bookingForm);
       const payload = Object.fromEntries(formData.entries());
 
-      payload._subject = 'New Appointment Request - Green Torque';
-      payload._template = 'table';
-      payload._captcha = 'false';
-
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
       }
 
-      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(ADMIN_EMAIL), {
+      fetch('api/book-appointment.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -305,13 +276,16 @@
         body: JSON.stringify(payload)
       })
         .then(function (response) {
-          if (!response.ok) {
-            throw new Error('Request failed');
-          }
-          return response.json();
+          return response.json().then(function (data) {
+            return { ok: response.ok, data: data };
+          });
         })
-        .then(function () {
-          showStatus('Thank you! Your appointment was confirmed.', 'success');
+        .then(function (result) {
+          if (!result.ok || !result.data.success) {
+            throw new Error(result.data.error || 'Request failed');
+          }
+
+          showStatus(result.data.message || 'Thank you! Your appointment request was received.', 'success');
           bookingForm.reset();
           resetVehicleSelects();
 
@@ -321,8 +295,11 @@
             dateInput.min = tomorrow.toISOString().split('T')[0];
           }
         })
-        .catch(function () {
-          showStatus('Unable to send your request. Please call (916) 896-9086 for urgent assistance.', 'error');
+        .catch(function (error) {
+          showStatus(
+            error.message || 'Unable to send your request. Please call (916) 896-9086 for urgent assistance.',
+            'error'
+          );
         })
         .finally(function () {
           if (submitButton) {

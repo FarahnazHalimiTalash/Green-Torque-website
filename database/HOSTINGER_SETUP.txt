@@ -1,0 +1,47 @@
+Green Torque — Hostinger backend setup
+=====================================
+
+1. CREATE MYSQL DATABASE (hPanel)
+   - Websites → Manage → Databases → MySQL Databases
+   - Create database, user, and password
+   - Assign user to database with ALL PRIVILEGES
+
+2. IMPORT DATABASE TABLE
+   - Open phpMyAdmin
+   - Select your database
+   - Import file: database/schema.sql
+
+3. CONFIGURE PHP
+   - Copy api/config.example.php to api/config.php
+   - Fill in DB_HOST, DB_NAME, DB_USER, DB_PASS
+   - Set NOTIFY_EMAIL to Info@greentorqueev.com
+   - Set EMAIL_FROM to noreply@greentorqueev.com (or your Hostinger mailbox)
+   - Change ADMIN_USERNAME and ADMIN_PASSWORD
+
+4. UPLOAD WEBSITE FILES
+   Upload everything to public_html, including:
+   - index.html, css/, js/, images/
+   - api/ folder (with config.php — do NOT commit config.php to GitHub)
+   - admin/ folder
+   - database/ folder (optional, for reference)
+   - robots.txt, sitemap.xml
+
+5. TEST BOOKING FORM
+   - Visit https://greentorqueev.com
+   - Submit a test appointment
+   - Check phpMyAdmin → appointments table
+
+6. ADMIN DASHBOARD
+   - Visit https://greentorqueev.com/admin/
+   - Log in with ADMIN_USERNAME / ADMIN_PASSWORD
+   - View appointments and update status
+
+7. EMAIL NOTIFICATIONS
+   - Hostinger usually supports PHP mail()
+   - If email does not arrive, create noreply@greentorqueev.com in hPanel → Emails
+   - Use that address for EMAIL_FROM in config.php
+
+Notes:
+- Booking API: api/book-appointment.php
+- Admin panel: admin/index.php
+- Keep api/config.php private (already in .gitignore)
