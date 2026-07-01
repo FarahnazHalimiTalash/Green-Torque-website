@@ -16,6 +16,12 @@
   const yearSelect = document.getElementById('vehicle-year');
   const makeSelect = document.getElementById('make');
   const modelSelect = document.getElementById('model');
+  const serviceSelect = document.getElementById('service');
+  const hybridServiceGroup = document.getElementById('hybrid-service-group');
+  const hybridServiceSelect = document.getElementById('hybrid-service');
+  const submitButton = bookingForm ? bookingForm.querySelector('button[type="submit"]') : null;
+
+  const ADMIN_EMAIL = 'Info@greentorqueev.com';
 
   const VEHICLE_DATA = {
     Acura: ['ILX', 'Integra', 'MDX', 'RDX', 'TLX', 'Other'],
@@ -119,6 +125,32 @@
     });
   }
 
+  function resetHybridServiceField() {
+    if (!hybridServiceGroup || !hybridServiceSelect) return;
+
+    hybridServiceGroup.hidden = true;
+    hybridServiceSelect.required = false;
+    hybridServiceSelect.selectedIndex = 0;
+  }
+
+  function toggleHybridServiceField() {
+    if (!serviceSelect || !hybridServiceGroup || !hybridServiceSelect) return;
+
+    if (serviceSelect.value === 'hybrid-ev') {
+      hybridServiceGroup.hidden = false;
+      hybridServiceSelect.required = true;
+      return;
+    }
+
+    resetHybridServiceField();
+  }
+
+  if (serviceSelect) {
+    serviceSelect.addEventListener('change', toggleHybridServiceField);
+  }
+
+  resetHybridServiceField();
+
   function resetVehicleSelects() {
     if (yearSelect) yearSelect.selectedIndex = 0;
     if (makeSelect) makeSelect.selectedIndex = 0;
@@ -126,6 +158,7 @@
       filterModelOptions('');
       modelSelect.selectedIndex = 0;
     }
+    resetHybridServiceField();
   }
 
   /* Footer year */
@@ -237,6 +270,8 @@
       clearErrors();
       showStatus('', '');
 
+      toggleHybridServiceField();
+
       const fields = bookingForm.querySelectorAll('[required]');
       let valid = true;
 
@@ -250,20 +285,51 @@
       }
 
       const formData = new FormData(bookingForm);
-      const data = Object.fromEntries(formData.entries());
+      const payload = Object.fromEntries(formData.entries());
 
-      /* Frontend-only: log and show success. Replace with PHP/API call later. */
-      console.log('Appointment request:', data);
+      payload._subject = 'New Appointment Request - Green Torque';
+      payload._template = 'table';
+      payload._captcha = 'false';
 
-      showStatus('Thank you! We\'ll confirm your appointment within one business day.', 'success');
-      bookingForm.reset();
-      resetVehicleSelects();
-
-      if (dateInput) {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        dateInput.min = tomorrow.toISOString().split('T')[0];
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
       }
+
+      fetch('https://formsubmit.co/ajax/' + encodeURIComponent(ADMIN_EMAIL), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Request failed');
+          }
+          return response.json();
+        })
+        .then(function () {
+          showStatus('Thank you! Your appointment was confirmed.', 'success');
+          bookingForm.reset();
+          resetVehicleSelects();
+
+          if (dateInput) {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.min = tomorrow.toISOString().split('T')[0];
+          }
+        })
+        .catch(function () {
+          showStatus('Unable to send your request. Please call (916) 896-9086 for urgent assistance.', 'error');
+        })
+        .finally(function () {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Request Appointment';
+          }
+        });
     });
 
     bookingForm.querySelectorAll('.form__input').forEach(function (input) {

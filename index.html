@@ -186,13 +186,19 @@
           <div class="booking__info">
             <p class="section__eyebrow">Get Started</p>
             <h2 class="section__title">Book an Appointment</h2>
-            <p class="booking__desc">Fill out the form and our team will confirm your appointment within one business day.</p>
+            <p class="booking__desc">Complete the form below and our team will follow up to finalize your appointment.</p>
 
             <div class="hours" id="hours">
               <h3 class="hours__title">Business Hours</h3>
               <ul class="hours__list">
                 <li><span>Monday – Sunday</span><span>8:00 AM – 6:00 PM</span></li>
               </ul>
+            </div>
+
+            <div class="booking__urgent">
+              <h3 class="booking__urgent-title">Need urgent service?</h3>
+              <p class="booking__urgent-text">For same-day or emergency appointments, call us directly:</p>
+              <a href="tel:+19168969086" class="booking__urgent-phone">+1 (916) 896-9086</a>
             </div>
           </div>
 
@@ -260,16 +266,30 @@
               <div class="form__group">
                 <label for="service" class="form__label">Service</label>
                 <select id="service" name="service" class="form__input form__select" required>
-                  <option value="" disabled selected>Select a service</option>
-                  <option value="hybrid-ev">Hybrid &amp; EV Repair</option>
-                  <option value="diagnostics">Engine Diagnostics</option>
-                  <option value="tires">Tire Services</option>
-                  <option value="brakes">Brake Service</option>
-                  <option value="oil-change">Oil Change &amp; Fluids</option>
+                  <option value="" disabled selected>Select service</option>
+                  <option value="hybrid-ev">Hybrid &amp; EV</option>
+                  <option value="diagnostics">Diagnostics</option>
+                  <option value="tires">Tires</option>
+                  <option value="brakes">Brakes</option>
+                  <option value="oil-change">Oil &amp; Fluids</option>
                   <option value="inspection">Inspection</option>
                   <option value="other">Other</option>
                 </select>
               </div>
+            </div>
+
+            <div class="form__group" id="hybrid-service-group" hidden>
+              <label for="hybrid-service" class="form__label">Hybrid &amp; EV Service Type</label>
+              <select id="hybrid-service" name="hybrid_service" class="form__input form__select">
+                <option value="" disabled selected>Select hybrid/EV service</option>
+                <option value="battery-diagnostics">Battery Diagnostics</option>
+                <option value="battery-replacement">Battery Replacement</option>
+                <option value="high-voltage">High-Voltage System Repair</option>
+                <option value="ev-maintenance">Hybrid/EV Maintenance</option>
+                <option value="charging-system">Charging System Service</option>
+                <option value="electrical">Electrical Troubleshooting</option>
+                <option value="hybrid-other">Other Hybrid/EV Service</option>
+              </select>
             </div>
 
             <div class="form__row">
