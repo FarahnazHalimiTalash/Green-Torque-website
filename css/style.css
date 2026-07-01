@@ -441,13 +441,83 @@ ul {
 .reviews__title {
   font-size: 1.125rem;
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.reviews__summary {
+  margin-bottom: 1rem;
+}
+
+.reviews__rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.reviews__score {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  line-height: 1;
+}
+
+.reviews__stars {
+  color: var(--color-secondary);
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+}
+
+.reviews__count {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
 }
 
 .reviews__list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.reviews__message {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.reviews__message code {
+  font-size: 0.8125rem;
+}
+
+.reviews__message--error {
+  border-color: rgba(220, 53, 69, 0.35);
+}
+
+.reviews__link {
+  display: inline-flex;
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.reviews__link:hover {
+  color: var(--color-secondary-dark);
+}
+
+.reviews__attribution {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
 }
 
 .review-card {
@@ -459,11 +529,36 @@ ul {
   border-left: 4px solid var(--color-primary);
 }
 
+.review-card__header {
+  display: flex;
+  gap: 0.875rem;
+  align-items: center;
+  margin-bottom: 0.875rem;
+}
+
+.review-card__avatar {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-card__avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
 .review-card__stars {
   color: var(--color-secondary);
   font-size: 0.875rem;
   letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .review-card__text {
@@ -471,7 +566,7 @@ ul {
   color: var(--color-text-muted);
   line-height: 1.65;
   font-style: italic;
-  margin-bottom: 0.875rem;
+  margin: 0;
 }
 
 .review-card__author {
