@@ -317,11 +317,27 @@ ul {
 }
 
 .hero__title {
-  font-size: clamp(2.5rem, 6vw, 3.75rem);
   font-weight: 700;
   line-height: 1.1;
-  color: var(--color-white);
+  color: var(--color-secondary);
   margin-bottom: 1.25rem;
+}
+
+.hero__title-brand,
+.hero__title-tagline {
+  display: block;
+  color: var(--color-secondary);
+}
+
+.hero__title-brand {
+  font-size: clamp(3.75rem, 11vw, 6rem);
+  margin-bottom: 0.5rem;
+}
+
+.hero__title-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.1875rem);
+  font-weight: 500;
+  line-height: 1.7;
 }
 
 .hero__subtitle {
@@ -614,11 +630,18 @@ ul {
   align-items: center;
   gap: 0.625rem;
   padding: 0.875rem 1.5rem;
-  background: var(--color-bg-alt);
+  background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   font-weight: 500;
   font-size: 0.9375rem;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+.payment-badge:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
 }
 
 .payment-badge svg {
@@ -678,25 +701,26 @@ ul {
 }
 
 .hours {
-  background: var(--color-white);
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-secondary-light);
+  border: 1px solid rgba(255, 140, 0, 0.25);
+  border-left: 4px solid var(--color-secondary);
   border-radius: var(--radius);
-  border: 1px solid var(--color-border);
 }
 
 .hours__title {
   font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.375rem;
 }
 
 .hours__list li {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 0;
   font-size: 0.9375rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: none;
 }
 
 .hours__list li:last-child {
@@ -712,7 +736,8 @@ ul {
   background: var(--color-white);
   padding: 2rem;
   border-radius: var(--radius);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 140, 0, 0.25);
+  border-left: 4px solid var(--color-secondary);
   box-shadow: var(--shadow);
 }
 
