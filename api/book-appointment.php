@@ -47,10 +47,11 @@ try {
 
 $data['id'] = $appointmentId;
 $data['preferred_time'] = substr($data['preferred_time'], 0, 5);
-$emailSent = sendAppointmentEmail($data);
+$notify = notifyBusinessOwner($data);
 
 jsonSuccess([
     'message' => 'Thank you! Your appointment request was received. Our team will confirm your booking shortly.',
     'appointmentId' => $appointmentId,
-    'emailSent' => $emailSent,
+    'emailSent' => $notify['emailSent'],
+    'smsSent' => $notify['smsSent'],
 ]);

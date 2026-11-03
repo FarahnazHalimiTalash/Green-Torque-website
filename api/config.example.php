@@ -14,8 +14,23 @@ define('DB_PASS', 'your_database_password');
 define('DB_CHARSET', 'utf8mb4');
 
 define('NOTIFY_EMAIL', 'Info@greentorqueev.com');
-define('EMAIL_FROM', 'noreply@greentorqueev.com');
+define('EMAIL_FROM', 'Info@greentorqueev.com');
 define('BUSINESS_NAME', 'Green Torque Hybrid/EV Repair');
+
+// Owner email when a customer books (recommended: Hostinger SMTP)
+define('SMTP_HOST', 'smtp.hostinger.com');
+define('SMTP_PORT', 465);
+define('SMTP_USER', 'Info@greentorqueev.com');
+define('SMTP_PASS', 'your-email-account-password');
+
+// Backup if SMTP/php mail fail (first FormSubmit email may require activation link)
+define('USE_FORMSUBMIT_NOTIFY', true);
+
+// SMS to business owner (optional — requires Twilio account: https://www.twilio.com)
+define('NOTIFY_PHONE', '+19168969086');
+define('TWILIO_ACCOUNT_SID', '');
+define('TWILIO_AUTH_TOKEN', '');
+define('TWILIO_FROM_NUMBER', '');
 
 define('ADMIN_USERNAME', 'admin');
 define('ADMIN_PASSWORD', 'change-this-password');

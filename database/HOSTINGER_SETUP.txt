@@ -36,10 +36,22 @@ Green Torque — Hostinger backend setup
    - Log in with ADMIN_USERNAME / ADMIN_PASSWORD
    - View appointments and update status
 
-7. EMAIL NOTIFICATIONS
-   - Hostinger usually supports PHP mail()
-   - If email does not arrive, create noreply@greentorqueev.com in hPanel → Emails
-   - Use that address for EMAIL_FROM in config.php
+7. EMAIL NOTIFICATIONS (business owner when customer books)
+   - hPanel → Emails → create Info@greentorqueev.com (if not created yet)
+   - In api/config.php set:
+       NOTIFY_EMAIL = Info@greentorqueev.com
+       SMTP_HOST = smtp.hostinger.com
+       SMTP_PORT = 465
+       SMTP_USER = Info@greentorqueev.com
+       SMTP_PASS = your Hostinger email password
+   - Upload api/smtp-client.php and updated api/helpers.php
+   - Submit a test booking → check Info@ inbox (and spam)
+   - Backup: FormSubmit may also send if SMTP fails (activate first link if FormSubmit emails you)
+
+8. SMS NOTIFICATIONS (optional — business phone)
+   - Sign up at twilio.com and buy/get a Twilio phone number
+   - In api/config.php set NOTIFY_PHONE, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER
+   - Small cost per text message; leave Twilio fields empty to use email only
 
 Notes:
 - Booking API: api/book-appointment.php
