@@ -316,12 +316,12 @@ function notifyBusinessOwner(array $appointment): array
         $emailSent = sendAppointmentEmailSmtp($appointment, $subject, $body);
     }
 
-    if (!$emailSent) {
-        $emailSent = sendAppointmentEmailPhpMail($appointment, $subject, $body);
+    if (!$emailSent && (defined('USE_FORMSUBMIT_NOTIFY') ? USE_FORMSUBMIT_NOTIFY : true)) {
+        $emailSent = sendAppointmentEmailFormSubmit($appointment);
     }
 
     if (!$emailSent) {
-        $emailSent = sendAppointmentEmailFormSubmit($appointment);
+        $emailSent = sendAppointmentEmailPhpMail($appointment, $subject, $body);
     }
 
     $smsSent = sendAppointmentSms($appointment);

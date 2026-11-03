@@ -26,6 +26,9 @@ define('SMTP_PASS', 'your-email-account-password');
 // Backup if SMTP/php mail fail (first FormSubmit email may require activation link)
 define('USE_FORMSUBMIT_NOTIFY', true);
 
+// One-time email test URL: https://yoursite.com/api/email-test.php?key=your-secret-key
+define('EMAIL_TEST_KEY', 'change-this-test-key');
+
 // SMS to business owner (optional — requires Twilio account: https://www.twilio.com)
 define('NOTIFY_PHONE', '+19168969086');
 define('TWILIO_ACCOUNT_SID', '');
