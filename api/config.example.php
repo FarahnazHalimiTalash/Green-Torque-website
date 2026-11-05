@@ -13,14 +13,14 @@ define('DB_USER', 'your_database_user');
 define('DB_PASS', 'your_database_password');
 define('DB_CHARSET', 'utf8mb4');
 
-define('NOTIFY_EMAIL', 'Info@greentorqueev.com');
-define('EMAIL_FROM', 'Info@greentorqueev.com');
+define('NOTIFY_EMAIL', 'info@greentorqueev.com');
+define('EMAIL_FROM', 'info@greentorqueev.com');
 define('BUSINESS_NAME', 'Green Torque Hybrid/EV Repair');
 
 // Owner email when a customer books (recommended: Hostinger SMTP)
 define('SMTP_HOST', 'smtp.hostinger.com');
 define('SMTP_PORT', 465);
-define('SMTP_USER', 'Info@greentorqueev.com');
+define('SMTP_USER', 'info@greentorqueev.com');
 define('SMTP_PASS', 'your-email-account-password');
 
 // Backup if SMTP/php mail fail (first FormSubmit email may require activation link)

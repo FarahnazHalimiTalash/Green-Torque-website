@@ -27,34 +27,34 @@ window.GREEN_TORQUE_SEO = {
   },
   services: [
     {
-      name: 'Hybrid & EV Repair',
+      name: 'Hybrid & EV Repair in Sacramento',
       description:
-        'Battery testing, replacement, and diagnostics, high-voltage system repair, alternator service, electrical troubleshooting, and full hybrid and electric vehicle maintenance in Sacramento.'
+        'Professional hybrid and electric vehicle repair in Sacramento, CA, including EV battery diagnostics, high-voltage system repair, charging-system service, and hybrid maintenance.'
     },
     {
-      name: 'Engine Diagnostics',
+      name: 'Engine Diagnostics & Check Engine Light Service',
       description:
-        'Advanced computer diagnostics to pinpoint check-engine lights, performance issues, and module programming for gas, hybrid, and electric vehicles.'
+        'Advanced engine diagnostics in Sacramento for check-engine lights, performance issues, misfires, electrical faults, and drivability problems.'
     },
     {
-      name: 'Tire Services',
+      name: 'Tire Service & Wheel Alignment',
       description:
-        'Tire rotation, balancing, alignment, and new tire installation from trusted brands for cars, SUVs, and trucks.'
+        'Complete tire services in Sacramento, including rotation, balancing, wheel alignment, tire inspections, and professional tire replacement.'
     },
     {
-      name: 'Brake Service',
+      name: 'Brake Repair & Maintenance',
       description:
-        'Brake pad and rotor replacement, ABS repair, brake line inspection, and full brake system diagnostics for safe stopping.'
+        'Reliable brake service in Sacramento, including brake inspections, pad and rotor replacement, brake fluid service, and regenerative-braking diagnostics for hybrid and EV vehicles.'
     },
     {
-      name: 'Oil Change & Fluids',
+      name: 'Oil Change & Fluid Services',
       description:
-        'Oil changes, coolant flushes, brake fluid service, and transmission fluid service to extend engine and component life.'
+        'Preventive auto maintenance in Sacramento, including oil changes, coolant flushes, brake fluid service, transmission fluid service, and vehicle fluid inspections.'
     },
     {
-      name: 'Vehicle Inspections',
+      name: 'Vehicle Inspections in Sacramento',
       description:
-        'State safety inspections, pre-purchase evaluations, and comprehensive vehicle health checks.'
+        'Professional pre-purchase inspections, safety checks, multi-point inspections, and complete vehicle health assessments for cars, hybrids, and EVs in Sacramento, CA.'
     }
   ],
   hybridServices: [
@@ -84,13 +84,29 @@ window.GREEN_TORQUE_SEO = {
     }
   ],
   bookingServices: [
-    'Hybrid & EV',
-    'Diagnostics',
-    'Tires',
-    'Brakes',
-    'Oil & Fluids',
-    'Inspection',
-    'Other Automotive Service'
+    'EV Battery Diagnostics & Health Testing',
+    'High-Voltage Battery Repair & Replacement',
+    'EV Charging System Diagnostics',
+    'Inverter & Power Electronics Diagnostics',
+    'Regenerative Braking Diagnostics',
+    'EV Software Diagnostics & System Resets',
+    'Electric Drive Motor Diagnostics & Repair',
+    'Brake Inspection, Repair & Maintenance',
+    'Oil Changes & Fluid Services',
+    'Engine Diagnostics',
+    'Check Engine Light Diagnosis',
+    '12-Volt Battery Testing & Replacement',
+    'Alternator & Starter Repair',
+    'Wheel Alignment',
+    'Suspension & Steering Repair',
+    'Air Conditioning & Heating Service',
+    'Transmission Diagnostics & Service',
+    'Cooling System & Radiator Repair',
+    'Belts & Hoses Replacement',
+    'Automotive Electrical Diagnostics',
+    'Pre-Purchase Vehicle Inspections',
+    'Preventive Vehicle Maintenance',
+    'Other'
   ],
   faqs: [
     {

@@ -1,0 +1,15 @@
+Upload these files to Hostinger → public_html (and api folder where noted)
+
+FOOTER + BOOKING (frontend):
+  index.html
+  css/style.css
+  js/script.js
+  js/services-data.js
+  js/social-config.js   ← edit Instagram/TikTok URLs here if needed
+
+EMAIL / BOOKING BACKEND (if not already on server):
+  api/helpers.php
+
+After upload: hard refresh greentorqueev.com (Ctrl+F5)
+
+Social URLs: edit js/social-config.js on Hostinger if Instagram or TikTok links are wrong.

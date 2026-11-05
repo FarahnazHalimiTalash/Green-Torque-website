@@ -17,8 +17,6 @@
   const makeSelect = document.getElementById('make');
   const modelSelect = document.getElementById('model');
   const serviceSelect = document.getElementById('service');
-  const hybridServiceGroup = document.getElementById('hybrid-service-group');
-  const hybridServiceSelect = document.getElementById('hybrid-service');
   const submitButton = bookingForm ? bookingForm.querySelector('button[type="submit"]') : null;
 
   const VEHICLE_DATA = window.VEHICLE_DATA || {};
@@ -100,31 +98,36 @@
     });
   }
 
-  function resetHybridServiceField() {
-    if (!hybridServiceGroup || !hybridServiceSelect) return;
-
-    hybridServiceGroup.hidden = true;
-    hybridServiceSelect.required = false;
-    hybridServiceSelect.selectedIndex = 0;
+  function getServiceCatalog() {
+    return window.GREEN_TORQUE_SERVICES || null;
   }
 
-  function toggleHybridServiceField() {
-    if (!serviceSelect || !hybridServiceGroup || !hybridServiceSelect) return;
+  function populateServiceSelect() {
+    if (!serviceSelect) return;
 
-    if (serviceSelect.value === 'hybrid-ev') {
-      hybridServiceGroup.hidden = false;
-      hybridServiceSelect.required = true;
-      return;
+    /* Options may already be in index.html (works even if services-data.js fails to load). */
+    if (serviceSelect.options.length > 1) return;
+
+    const catalog = getServiceCatalog();
+    if (!catalog || !catalog.items) return;
+
+    catalog.items.forEach(function (item) {
+      const option = document.createElement('option');
+      option.value = item.slug;
+      option.textContent = item.label;
+      serviceSelect.appendChild(option);
+    });
+
+    if (catalog.other) {
+      const otherOption = document.createElement('option');
+      otherOption.value = catalog.other.slug;
+      otherOption.textContent = catalog.other.label;
+      serviceSelect.appendChild(otherOption);
     }
-
-    resetHybridServiceField();
   }
 
-  if (serviceSelect) {
-    serviceSelect.addEventListener('change', toggleHybridServiceField);
-  }
-
-  resetHybridServiceField();
+  populateServiceSelect();
+  window.addEventListener('load', populateServiceSelect);
 
   function resetVehicleSelects() {
     if (yearSelect) yearSelect.selectedIndex = 0;
@@ -133,13 +136,31 @@
       filterModelOptions('');
       modelSelect.selectedIndex = 0;
     }
-    resetHybridServiceField();
+    if (serviceSelect) serviceSelect.selectedIndex = 0;
   }
 
   /* Footer year */
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  function applySocialLink(linkId, url) {
+    const linkEl = document.getElementById(linkId);
+
+    if (!linkEl) return;
+
+    const trimmedUrl = typeof url === 'string' ? url.trim() : '';
+
+    if (trimmedUrl !== '') {
+      linkEl.href = trimmedUrl;
+    }
+  }
+
+  const socialLinks = window.GREEN_TORQUE_SOCIAL || {};
+
+  applySocialLink('social-facebook', socialLinks.facebook);
+  applySocialLink('social-instagram', socialLinks.instagram);
+  applySocialLink('social-tiktok', socialLinks.tiktok);
 
   /* Minimum booking date = tomorrow */
   if (dateInput) {
@@ -150,6 +171,8 @@
 
   /* Sticky header shadow */
   function onScroll() {
+    if (!header) return;
+
     if (window.scrollY > 20) {
       header.classList.add('header--scrolled');
     } else {
@@ -245,11 +268,8 @@
       clearErrors();
       showStatus('', '');
 
-      toggleHybridServiceField();
-
       const fields = bookingForm.querySelectorAll('[required]');
       let valid = true;
-
       fields.forEach(function (field) {
         if (!validateField(field)) valid = false;
       });

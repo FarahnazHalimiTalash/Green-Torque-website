@@ -1,0 +1,27 @@
+HTTP 500 after adding EMAIL_TEST_KEY = usually a typo in config.php
+====================================================================
+
+On Hostinger: public_html/api/config.php
+
+Each line must look EXACTLY like this (semicolon at the end, quotes matched):
+
+define('NOTIFY_EMAIL', 'Info@greentorqueev.com');
+define('SMTP_HOST', 'smtp.hostinger.com');
+define('SMTP_PORT', 465);
+define('SMTP_USER', 'Info@greentorqueev.com');
+define('SMTP_PASS', 'your-email-password-here');
+define('EMAIL_TEST_KEY', 'Test2026');
+
+COMMON MISTAKES:
+- Missing ; at end of the line BEFORE EMAIL_TEST_KEY
+- Password has a quote character ' inside — use a password without quotes, or escape it
+- Two define('EMAIL_TEST_KEY'... lines (delete duplicate)
+- Pasted smart quotes “ ” instead of straight quotes '
+
+After fixing, save config.php then open:
+
+https://greentorqueev.com/api/email-test.php?key=Test2026&step=ping
+
+If ping works, open:
+
+https://greentorqueev.com/api/email-test.php?key=Test2026

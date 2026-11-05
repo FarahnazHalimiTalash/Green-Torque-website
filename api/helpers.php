@@ -95,16 +95,71 @@ function formatTimeLabel(string $time): string
 function serviceLabel(string $service): string
 {
     $labels = [
+        'ev-battery-diagnostics' => 'EV Battery Diagnostics & Health Testing',
+        'ev-hv-battery-repair' => 'High-Voltage Battery Repair & Replacement',
+        'ev-charging-diagnostics' => 'EV Charging System Diagnostics',
+        'ev-inverter-diagnostics' => 'Inverter & Power Electronics Diagnostics',
+        'ev-regen-braking' => 'Regenerative Braking Diagnostics',
+        'ev-software-diagnostics' => 'EV Software Diagnostics & System Resets',
+        'ev-drive-motor' => 'Electric Drive Motor Diagnostics & Repair',
+        'brakes' => 'Brake Inspection, Repair & Maintenance',
+        'oil-fluids' => 'Oil Changes & Fluid Services',
+        'engine-diagnostics' => 'Engine Diagnostics',
+        'check-engine' => 'Check Engine Light Diagnosis',
+        'battery-12v' => '12-Volt Battery Testing & Replacement',
+        'alternator-starter' => 'Alternator & Starter Repair',
+        'wheel-alignment' => 'Wheel Alignment',
+        'suspension-steering' => 'Suspension & Steering Repair',
+        'ac-heating' => 'Air Conditioning & Heating Service',
+        'transmission' => 'Transmission Diagnostics & Service',
+        'cooling-system' => 'Cooling System & Radiator Repair',
+        'belts-hoses' => 'Belts & Hoses Replacement',
+        'electrical-diagnostics' => 'Automotive Electrical Diagnostics',
+        'pre-purchase' => 'Pre-Purchase Vehicle Inspections',
+        'preventive-maintenance' => 'Preventive Vehicle Maintenance',
+        'other' => 'Other',
         'hybrid-ev' => 'Hybrid & EV',
         'diagnostics' => 'Diagnostics',
         'tires' => 'Tires',
-        'brakes' => 'Brakes',
         'oil-change' => 'Oil & Fluids',
         'inspection' => 'Inspection',
-        'other' => 'Other',
     ];
 
     return $labels[$service] ?? $service;
+}
+
+function allowedServiceSlugs(): array
+{
+    return [
+        'ev-battery-diagnostics',
+        'ev-hv-battery-repair',
+        'ev-charging-diagnostics',
+        'ev-inverter-diagnostics',
+        'ev-regen-braking',
+        'ev-software-diagnostics',
+        'ev-drive-motor',
+        'brakes',
+        'oil-fluids',
+        'engine-diagnostics',
+        'check-engine',
+        'battery-12v',
+        'alternator-starter',
+        'wheel-alignment',
+        'suspension-steering',
+        'ac-heating',
+        'transmission',
+        'cooling-system',
+        'belts-hoses',
+        'electrical-diagnostics',
+        'pre-purchase',
+        'preventive-maintenance',
+        'diagnostics',
+        'tires',
+        'oil-change',
+        'inspection',
+        'other',
+        'hybrid-ev',
+    ];
 }
 
 function hybridServiceLabel(string $value): string
@@ -369,19 +424,11 @@ function validateAppointmentInput(array $input): array
         jsonError('Vehicle make and model are required.');
     }
 
-    $allowedServices = ['hybrid-ev', 'diagnostics', 'tires', 'brakes', 'oil-change', 'inspection', 'other'];
-
-    if (!in_array($service, $allowedServices, true)) {
+    if (!in_array($service, allowedServiceSlugs(), true)) {
         jsonError('Please select a valid service.');
     }
 
-    if ($service === 'hybrid-ev' && $hybridService === '') {
-        jsonError('Please select a hybrid/EV service type.');
-    }
-
-    if ($service !== 'hybrid-ev') {
-        $hybridService = '';
-    }
+    $hybridService = '';
 
     if (!validateDate($date)) {
         jsonError('Please select a valid appointment date.');

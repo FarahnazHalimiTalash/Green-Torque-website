@@ -1,0 +1,35 @@
+Green Torque — upload these 3 files to Hostinger
+================================================
+
+WHERE ON YOUR COMPUTER (upload FROM here):
+  Desktop → Green Torque → upload-to-hostinger-api
+
+FILES IN THIS FOLDER (upload all 3):
+  1. email-test.php   ← NEW (email test tool)
+  2. helpers.php      ← replace old file on server
+  3. smtp-client.php  ← replace old file on server
+
+WHERE ON HOSTINGER (upload TO here):
+  1. Log in to Hostinger
+  2. Websites → greentorqueev.com → File Manager
+  3. Open folder: public_html → api
+  4. Click Upload
+  5. Select all 3 files from "upload-to-hostinger-api" on your Desktop
+  6. If asked to replace helpers.php or smtp-client.php, choose Replace / Overwrite
+
+AFTER UPLOAD — add test key in config.php (on Hostinger only):
+  Edit public_html/api/config.php and add this line (any password you want):
+
+  define('EMAIL_TEST_KEY', 'MyTest123');
+
+  Save the file.
+
+THEN open in your browser:
+  https://greentorqueev.com/api/email-test.php?key=MyTest123
+
+  (Use the same word you put after key= in config.php)
+
+You should see "emailSent": true or false.
+Check Info@greentorqueev.com inbox and spam for a test email.
+
+DO NOT upload config.php from your computer if you already edited it on Hostinger.
